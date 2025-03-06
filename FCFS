@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdbool.h>
+
+int main(){
+    int n;
+    int at[100],bt[100],ct[100],tat[100],wt[100];
+    printf("ënter num of processor:");
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++){
+        printf("Enter the arrival time[%d]:",i+1);
+        scanf("%d",&at[i]);
+    }
+    for(int i=0;i<n;i++){
+        printf("Enter the bus time[%d]:",i+1);
+        scanf("%d",&bt[i]);
+    }
+    int sum=at[0];
+    for(int i=0;i<n;i++){
+        sum+=bt[i];
+        ct[i]=sum;
+    }
+
+    for(int i=0;i<n;i++){
+        tat[i]=ct[i]-at[i];
+    }
+    for(int i=0;i<n;i++){
+        wt[i]=tat[i]-bt[i];
+    }
+    printf("COMPLETION TIME:");
+    for(int i=0;i<n;i++){
+        printf("\n%d",ct[i]);
+    }
+
+    float TAT,WT;
+
+    for(int i=0;i<n;i++){
+        TAT+=tat[i];
+        WT+=wt[i];
+    }
+
+    TAT=(float)TAT/n;
+    WT=(float)WT/n;
+
+    printf("\nThe Avg TAT=%.3f",TAT);
+    printf("\nThe Avg WT=%.3f",WT);
+
+}
